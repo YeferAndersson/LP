@@ -1,0 +1,95 @@
+/* 
+Tailwind CSS v4 - Configuración explicativa
+
+En Tailwind CSS v4, ya no usamos tailwind.config.js.
+En su lugar, toda la configuración se hace directamente en CSS.
+
+Este archivo es solo para referencia y explicación.
+La configuración real está en src/layouts/Layout.astro
+*/
+
+/* 
+=== CONFIGURACIÓN DE TAILWIND V4 ===
+
+En lugar de esto (v3):
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        romantic: {
+          500: '#ea546c'
+        }
+      }
+    }
+  }
+}
+
+Ahora usamos esto (v4) en el CSS:
+@theme {
+  --color-romantic-500: #ea546c;
+}
+
+=== UTILIDADES PERSONALIZADAS ===
+
+En lugar de esto (v3):
+module.exports = {
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.text-gradient': {
+          background: 'linear-gradient(...)',
+          '-webkit-background-clip': 'text'
+        }
+      })
+    }
+  ]
+}
+
+Ahora usamos esto (v4) en el CSS:
+@utility text-gradient {
+  background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+=== VARIABLES DISPONIBLES ===
+
+Colores:
+--color-romantic-50 hasta --color-romantic-900
+--color-dreamy-50 hasta --color-dreamy-900
+
+Fuentes:
+--font-sans: "Inter", system-ui, sans-serif
+--font-cursive: "Dancing Script", cursive
+
+Breakpoints:
+--breakpoint-xs: 475px
+--breakpoint-3xl: 1600px
+
+Espaciado:
+--spacing-18: 4.5rem
+--spacing-112: 28rem
+--spacing-128: 32rem
+
+Funciones de timing:
+--ease-romantic: cubic-bezier(0.25, 0.46, 0.45, 0.94)
+--ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+--ease-smooth: cubic-bezier(0.4, 0, 0.2, 1)
+--ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6)
+
+=== UTILIDADES PERSONALIZADAS DISPONIBLES ===
+
+@utility text-gradient - Texto con gradiente romántico
+@utility text-gradient-animated - Texto con gradiente animado
+@utility glass-romantic - Efecto de cristal romántico
+@utility text-shadow-romantic - Sombra de texto romántica
+@utility animate-float - Animación flotante
+@utility animate-glow - Animación de brillo
+@utility animate-heartbeat - Animación de latido
+@utility animate-bounce-gentle - Rebote suave
+@utility animate-sparkle - Animación de destello
+@utility animate-romantic-pulse - Pulso romántico
+
+Para ver la implementación completa, revisa:
+src/layouts/Layout.astro
+*/

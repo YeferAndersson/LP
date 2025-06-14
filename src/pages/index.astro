@@ -1,103 +1,939 @@
 ---
+// src/pages/index.astro
 import Layout from "@/layouts/Layout.astro"
-
-import HeroKeyLogo from "@/assets/hero-key-logo.webp"
-import HeroKeyBackground from "@/assets/hero-key-background.webp"
-import LogoVI from "@/assets/logo-vi.svg"
-import PlayButtonIcon from "@/assets/play-button.svg"
-import LogoCutted from "@/assets/logo-cutted.svg"
 ---
 
 <Layout>
-  <div id="logo-mask" class="fixed top-0 w-full h-screen">
-    <section>
-      <picture
-        id="hero-key"
-        class="h-screen scale-125 block overflow-hidden fixed"
-      >
-        <img
-          id="hero-key-logo"
-          src={HeroKeyLogo.src}
-          class="absolute w-full h-full object-cover"
-        />
-        <img
-          id="hero-key-background"
-          src={HeroKeyBackground.src}
-          class="w-full h-full object-cover"
-        />
-      </picture>
-    </section>
-  </div>
+  <!-- Hero Section -->
+  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-rose-900/20 via-purple-900/20 to-pink-900/20"></div>
+    
+    <!-- Animated background particles -->
+    <div id="particles" class="absolute inset-0"></div>
+    
+    <div class="relative z-10 text-center">
+      <div id="hero-content" class="space-y-8">
+        <h1 class="text-6xl md:text-8xl font-cursive text-gradient font-bold">
+          <span id="hero-text-1">2 Años</span>
+        </h1>
+        <h2 class="text-2xl md:text-4xl font-light tracking-wide text-rose-200">
+          <span id="hero-text-2">De Amor Infinito</span>
+        </h2>
+        <div id="hero-date" class="text-lg md:text-xl text-rose-300 font-light">
+          <span id="anniversary-date">Desde aquel día mágico...</span>
+        </div>
+        
+        <!-- Animated heart -->
+        <div id="hero-heart" class="inline-block text-6xl animate-heartbeat">
+          ❤️
+        </div>
+        
+        <p id="hero-subtitle" class="text-lg md:text-xl text-rose-200 max-w-2xl mx-auto leading-relaxed">
+          Cada momento contigo ha sido un regalo. Cada día, una nueva razón para enamorarme más de ti.
+        </p>
+      </div>
+    </div>
+  </section>
 
-  <div
-    class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full"
-  >
-    <header class="flex justify-between w-full">
-      <LogoVI
-        class="size-11 text-white hover:text-yellow-100 transition-colors duration-500 cursor-pointer"
-      />
-    </header>
+  <!-- Our Story Timeline -->
+  <section id="timeline" class="py-32 px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-5xl font-cursive text-center text-gradient mb-20">
+        Nuestra Historia de Amor
+      </h2>
+      
+      <div class="relative">
+        <!-- Timeline line -->
+        <div id="timeline-line" class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-rose-500 to-purple-500 h-full opacity-30"></div>
+        
+        <!-- Timeline items -->
+        <div class="space-y-32">
+          <!-- First meeting -->
+          <div class="timeline-item relative" data-side="left">
+            <div class="flex items-center justify-between">
+              <div class="w-1/2 pr-8">
+                <div class="timeline-content bg-gradient-to-br from-rose-900/30 to-purple-900/30 backdrop-blur-sm border border-rose-300/20 rounded-2xl p-8">
+                  <h3 class="text-2xl font-cursive text-rose-200 mb-4">Nuestro Primer Encuentro</h3>
+                  <p class="text-rose-300/80 mb-4">El día que nuestros destinos se cruzaron por primera vez...</p>
+                  <div class="text-sm text-rose-400">Hace 2 años</div>
+                </div>
+              </div>
+              <div class="timeline-icon absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-rose-500 to-pink-500 rounded-full flex items-center justify-center text-2xl border-4 border-white/10">
+                💕
+              </div>
+              <div class="w-1/2"></div>
+            </div>
+          </div>
 
-    <button class="absolute inset-0 m-auto cursor-pointer inline-block">
-      <PlayButtonIcon
-        id="hero-play-button"
-        class="text-white m-auto size-32 mt-10 backdrop-blur-3xl rounded-full hover:scale-110 transition-transform duration-500"
-      />
-    </button>
+          <!-- First date -->
+          <div class="timeline-item relative" data-side="right">
+            <div class="flex items-center justify-between">
+              <div class="w-1/2"></div>
+              <div class="timeline-icon absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-2xl border-4 border-white/10">
+                🌹
+              </div>
+              <div class="w-1/2 pl-8">
+                <div class="timeline-content bg-gradient-to-bl from-purple-900/30 to-rose-900/30 backdrop-blur-sm border border-purple-300/20 rounded-2xl p-8">
+                  <h3 class="text-2xl font-cursive text-purple-200 mb-4">Primera Cita</h3>
+                  <p class="text-purple-300/80 mb-4">Ese momento perfecto donde todo comenzó a tener sentido...</p>
+                  <div class="text-sm text-purple-400">El inicio de todo</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <footer id="hero-footer" class="absolute bottom-8 m-auto">
-      <LogoCutted
-        class="text-white w-38 drop-shadow-[0_0_2px_rgba(255,255,255,.5),0_0_8px_#000]"
-      />
-      <span
-        class="absolute uppercase tracking-[6px] whitespace-nowrap text-center top-[49px] font-medium text-shadow-[0_0_2px_rgba(255,255,255,.5),0_0_8px_#000] left-1/2 -translate-x-1/2 text-lg"
-      >
-        Ver el Tráiler 2
-      </span>
-    </footer>
-  </div>
+          <!-- Special moments -->
+          <div class="timeline-item relative" data-side="left">
+            <div class="flex items-center justify-between">
+              <div class="w-1/2 pr-8">
+                <div class="timeline-content bg-gradient-to-br from-pink-900/30 to-rose-900/30 backdrop-blur-sm border border-pink-300/20 rounded-2xl p-8">
+                  <h3 class="text-2xl font-cursive text-pink-200 mb-4">Momentos Únicos</h3>
+                  <p class="text-pink-300/80 mb-4">Cada risa compartida, cada abrazo, cada "te amo" susurrado...</p>
+                  <div class="text-sm text-pink-400">Cada día juntos</div>
+                </div>
+              </div>
+              <div class="timeline-icon absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-full flex items-center justify-center text-2xl border-4 border-white/10">
+                ✨
+              </div>
+              <div class="w-1/2"></div>
+            </div>
+          </div>
+
+          <!-- Anniversary -->
+          <div class="timeline-item relative" data-side="right">
+            <div class="flex items-center justify-between">
+              <div class="w-1/2"></div>
+              <div class="timeline-icon absolute left-1/2 transform -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-yellow-400 to-rose-500 rounded-full flex items-center justify-center text-3xl border-4 border-white/20 animate-glow">
+                👑
+              </div>
+              <div class="w-1/2 pl-8">
+                <div class="timeline-content bg-gradient-to-bl from-yellow-900/30 to-rose-900/30 backdrop-blur-sm border border-yellow-300/20 rounded-2xl p-8">
+                  <h3 class="text-2xl font-cursive text-yellow-200 mb-4">Segundo Aniversario</h3>
+                  <p class="text-yellow-300/80 mb-4">Hoy celebramos 2 años de amor, complicidad y felicidad infinita...</p>
+                  <div class="text-sm text-yellow-400">¡Hoy! 🎉</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Love Letters Section -->
+  <section id="love-letters" class="py-32 px-8 bg-gradient-to-b from-transparent via-rose-900/10 to-transparent">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-cursive text-gradient mb-16">
+        Para Ti, Mi Amor
+      </h2>
+      
+      <div id="letter-content" class="space-y-12">
+        <div class="letter-card bg-gradient-to-br from-rose-900/20 to-purple-900/20 backdrop-blur-sm border border-rose-300/20 rounded-3xl p-12">
+          <p class="text-xl leading-relaxed text-rose-200 font-light italic mb-8">
+            "En estos dos años, has llenado mi vida de colores que no sabía que existían. 
+            Cada día contigo es una nueva página en nuestra historia de amor, 
+            una historia que quiero seguir escribiendo hasta el final de mis días."
+          </p>
+          <div class="w-16 h-1 bg-gradient-to-r from-rose-400 to-pink-400 mx-auto mb-8"></div>
+          <p class="text-lg text-rose-300/80 leading-relaxed">
+            Eres mi sol en los días grises, mi refugio en las tormentas, 
+            y mi razón para sonreír cada mañana. Te amo más de lo que las palabras pueden expresar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memories Gallery -->
+  <section id="memories" class="py-32 px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-5xl font-cursive text-center text-gradient mb-20">
+        Nuestros Recuerdos
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Memory cards will be populated by JavaScript -->
+        <div class="memory-card group cursor-pointer">
+          <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-rose-900/30 to-purple-900/30 backdrop-blur-sm border border-rose-300/20 p-8 h-64 flex items-center justify-center transition-all duration-500 group-hover:scale-105">
+            <div class="text-center">
+              <div class="text-6xl mb-4">📸</div>
+              <h3 class="text-xl font-cursive text-rose-200 mb-2">Primer Viaje Juntos</h3>
+              <p class="text-rose-300/70">Aventuras inolvidables</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="memory-card group cursor-pointer">
+          <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-300/20 p-8 h-64 flex items-center justify-center transition-all duration-500 group-hover:scale-105">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🎂</div>
+              <h3 class="text-xl font-cursive text-purple-200 mb-2">Cumpleaños Especiales</h3>
+              <p class="text-purple-300/70">Celebraciones llenas de amor</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="memory-card group cursor-pointer">
+          <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-pink-900/30 to-rose-900/30 backdrop-blur-sm border border-pink-300/20 p-8 h-64 flex items-center justify-center transition-all duration-500 group-hover:scale-105">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🌅</div>
+              <h3 class="text-xl font-cursive text-pink-200 mb-2">Amaneceres Juntos</h3>
+              <p class="text-pink-300/70">Momentos de paz y amor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Dreams -->
+  <section id="future" class="py-32 px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-cursive text-gradient mb-16">
+        Nuestro Futuro Juntos
+      </h2>
+      
+      <div class="space-y-16">
+        <div class="future-dream">
+          <div class="text-8xl mb-6">🏡</div>
+          <h3 class="text-3xl font-cursive text-rose-200 mb-4">Nuestro Hogar</h3>
+          <p class="text-lg text-rose-300/80 max-w-2xl mx-auto">
+            Un lugar lleno de amor, risas y recuerdos por crear, donde cada rincón cuente nuestra historia.
+          </p>
+        </div>
+        
+        <div class="future-dream">
+          <div class="text-8xl mb-6">✈️</div>
+          <h3 class="text-3xl font-cursive text-purple-200 mb-4">Aventuras Sin Fin</h3>
+          <p class="text-lg text-purple-300/80 max-w-2xl mx-auto">
+            Mil destinos por descubrir juntos, mil atardeceres por contemplar, mil historias por vivir.
+          </p>
+        </div>
+        
+        <div class="future-dream">
+          <div class="text-8xl mb-6">👨‍👩‍👧‍👦</div>
+          <h3 class="text-3xl font-cursive text-pink-200 mb-4">Nuestra Familia</h3>
+          <p class="text-lg text-pink-300/80 max-w-2xl mx-auto">
+            El amor que compartimos creciendo y multiplicándose en pequeños corazones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Love Counter -->
+  <section id="love-counter" class="py-32 px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-5xl font-cursive text-gradient mb-16">
+        Tiempo Juntos
+      </h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+        <div class="counter-card glass-romantic rounded-2xl p-8">
+          <div class="text-4xl md:text-6xl font-bold text-rose-300 mb-2" id="days-counter">0</div>
+          <div class="text-lg text-rose-400">Días</div>
+        </div>
+        <div class="counter-card glass-romantic rounded-2xl p-8">
+          <div class="text-4xl md:text-6xl font-bold text-purple-300 mb-2" id="hours-counter">0</div>
+          <div class="text-lg text-purple-400">Horas</div>
+        </div>
+        <div class="counter-card glass-romantic rounded-2xl p-8">
+          <div class="text-4xl md:text-6xl font-bold text-pink-300 mb-2" id="minutes-counter">0</div>
+          <div class="text-lg text-pink-400">Minutos</div>
+        </div>
+        <div class="counter-card glass-romantic rounded-2xl p-8">
+          <div class="text-4xl md:text-6xl font-bold text-yellow-300 mb-2" id="seconds-counter">0</div>
+          <div class="text-lg text-yellow-400">Segundos</div>
+        </div>
+      </div>
+      
+      <div class="space-y-6 text-rose-200">
+        <p class="text-lg" id="live-counter-message">
+          Cada segundo que pasa es un segundo más de amor compartido
+        </p>
+        <div class="romantic-button inline-block cursor-pointer" id="love-message-btn">
+          <div class="bg-gradient-to-r from-rose-500/20 to-pink-500/20 backdrop-blur-sm border border-rose-300/30 rounded-full px-8 py-3 text-rose-200 hover:from-rose-500/30 hover:to-pink-500/30 transition-all duration-300">
+            💕 Enviar Amor 💕
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Love Notes -->
+  <section id="love-notes" class="py-32 px-8 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-5xl font-cursive text-center text-gradient mb-20">
+        Notas de Amor Interactivas
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="love-note glass-romantic rounded-3xl p-8 cursor-pointer group" data-note="1">
+          <div class="text-6xl mb-6 group-hover:animate-bounce">💌</div>
+          <h3 class="text-2xl font-cursive text-rose-200 mb-4">Nuestro Primer Beso</h3>
+          <p class="text-rose-300/80">Haz clic para leer el recuerdo más dulce...</p>
+        </div>
+        
+        <div class="love-note glass-romantic rounded-3xl p-8 cursor-pointer group" data-note="2">
+          <div class="text-6xl mb-6 group-hover:animate-bounce">🌙</div>
+          <h3 class="text-2xl font-cursive text-purple-200 mb-4">Noches de Luna</h3>
+          <p class="text-purple-300/80">Recordando nuestras conversaciones bajo las estrellas...</p>
+        </div>
+        
+        <div class="love-note glass-romantic rounded-3xl p-8 cursor-pointer group" data-note="3">
+          <div class="text-6xl mb-6 group-hover:animate-bounce">🌅</div>
+          <h3 class="text-2xl font-cursive text-pink-200 mb-4">Amaneceres Juntos</h3>
+          <p class="text-pink-300/80">Cada amanecer es más hermoso contigo...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Message -->
+  <section id="final-message" class="py-32 px-8 text-center">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-8xl mb-8 animate-heartbeat">💖</div>
+      <h2 class="text-4xl md:text-6xl font-cursive text-gradient mb-8">
+        Te Amo Infinitamente
+      </h2>
+      <p class="text-xl text-rose-200 leading-relaxed mb-12">
+        Que estos dos años sean solo el comienzo de una eternidad juntos. 
+        Eres y serás siempre el amor de mi vida.
+      </p>
+      
+      <div class="space-y-4">
+        <p class="text-2xl font-cursive text-rose-300">
+          Feliz Segundo Aniversario, mi amor ❤️
+        </p>
+        <p class="text-lg text-rose-400">
+          Con todo mi amor, para siempre tuyo/a
+        </p>
+      </div>
+      
+      <!-- Special anniversary button -->
+      <div class="mt-12">
+        <button id="anniversary-surprise" class="romantic-button bg-gradient-to-r from-rose-500 to-pink-500 text-white px-12 py-4 rounded-full text-xl font-cursive shadow-lg hover:shadow-2xl hover:shadow-rose-500/50 transition-all duration-300 transform hover:scale-105">
+          🎉 Sorpresa Especial 🎉
+        </button>
+      </div>
+    </div>
+  </section>
 </Layout>
-
-<style>
-  #logo-mask {
-    background: white;
-    mask-image: url("/logo-stack.svg");
-    mask-position: center 25%;
-    mask-repeat: no-repeat;
-    mask-size: clamp(5000vh, 3500%, 0vh);
-  }
-</style>
 
 <script>
   import { gsap } from "gsap"
   import { ScrollTrigger } from "gsap/ScrollTrigger"
+  import { TextPlugin } from "gsap/TextPlugin"
+  import { motion, stagger, animate } from "motion"
+  
+  gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
-  gsap.registerPlugin(ScrollTrigger)
-
-  const tl = gsap.timeline({
-    ease: "power2.out",
-    scrollTrigger: {
-      scrub: 1,
-    },
+  // Initialize animations when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    initFloatingHearts()
+    initHeroAnimations()
+    initTimelineAnimations()
+    initScrollAnimations()
+    initParallaxEffects()
+    initLiveCounter()
+    initInteractiveNotes()
+    initMotionEffects()
+    initSpecialEffects()
   })
 
-  tl.to("#hero-key", { duration: 1, scale: 1 })
-    .to("#hero-key-logo", { opacity: 0 }, "<")
-    .to("#hero-footer", { opacity: 0 }, "<")
-    .to("#hero-play-button", { opacity: 0 }, "<")
-    .to(
-      "#logo-mask",
-      {
-        maskSize: "clamp(20vh, 25%, 30vh)",
+  // Create floating hearts background
+  function initFloatingHearts() {
+    const heartsContainer = document.getElementById('floating-hearts')
+    const heartEmojis = ['💕', '💖', '💗', '💝', '💞', '💘']
+    
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div')
+      heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)]
+      heart.className = 'absolute text-2xl opacity-20'
+      heart.style.left = Math.random() * 100 + '%'
+      heart.style.top = Math.random() * 100 + '%'
+      heart.style.animationDelay = Math.random() * 6 + 's'
+      heart.style.animation = 'float 6s ease-in-out infinite'
+      heartsContainer.appendChild(heart)
+    }
+  }
+
+  // Hero section animations
+  function initHeroAnimations() {
+    const tl = gsap.timeline()
+    
+    // Set initial states
+    gsap.set("#hero-content > *", { opacity: 0, y: 50 })
+    
+    // Animate hero content
+    tl.to("#hero-text-1", { 
+      opacity: 1, 
+      y: 0, 
+      duration: 1.5, 
+      ease: "power3.out" 
+    })
+    .to("#hero-text-2", { 
+      opacity: 1, 
+      y: 0, 
+      duration: 1.2, 
+      ease: "power3.out" 
+    }, "-=0.8")
+    .to("#anniversary-date", { 
+      opacity: 1, 
+      y: 0, 
+      duration: 1, 
+      ease: "power3.out" 
+    }, "-=0.6")
+    .to("#hero-heart", { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1.2, 
+      duration: 0.8, 
+      ease: "back.out(1.7)" 
+    }, "-=0.4")
+    .to("#hero-subtitle", { 
+      opacity: 1, 
+      y: 0, 
+      duration: 1, 
+      ease: "power3.out" 
+    }, "-=0.3")
+
+    // Typewriter effect for date
+    gsap.to("#anniversary-date", {
+      text: "13 de Junio, 2023 💕",
+      duration: 2,
+      delay: 3,
+      ease: "none"
+    })
+  }
+
+  // Timeline animations
+  function initTimelineAnimations() {
+    const timelineItems = document.querySelectorAll('.timeline-item')
+    
+    timelineItems.forEach((item, index) => {
+      const content = item.querySelector('.timeline-content')
+      const icon = item.querySelector('.timeline-icon')
+      const side = item.getAttribute('data-side')
+      
+      // Set initial state
+      gsap.set(content, { 
+        opacity: 0, 
+        x: side === 'left' ? -100 : 100,
+        y: 50 
+      })
+      gsap.set(icon, { 
+        opacity: 0, 
+        scale: 0 
+      })
+      
+      // Animate on scroll
+      ScrollTrigger.create({
+        trigger: item,
+        start: "top 80%",
+        end: "bottom 20%",
+        onEnter: () => {
+          const tl = gsap.timeline()
+          tl.to(icon, { 
+            opacity: 1, 
+            scale: 1, 
+            duration: 0.6, 
+            ease: "back.out(1.7)" 
+          })
+          .to(content, { 
+            opacity: 1, 
+            x: 0, 
+            y: 0, 
+            duration: 0.8, 
+            ease: "power3.out" 
+          }, "-=0.3")
+        }
+      })
+    })
+
+    // Animate timeline line
+    gsap.set("#timeline-line", { scaleY: 0, transformOrigin: "top center" })
+    ScrollTrigger.create({
+      trigger: "#timeline",
+      start: "top 60%",
+      end: "bottom 40%",
+      onEnter: () => {
+        gsap.to("#timeline-line", { 
+          scaleY: 1, 
+          duration: 2, 
+          ease: "power2.out" 
+        })
+      }
+    })
+  }
+
+  // Scroll-triggered animations
+  function initScrollAnimations() {
+    // Love letters animation
+    ScrollTrigger.create({
+      trigger: "#love-letters",
+      start: "top 70%",
+      onEnter: () => {
+        gsap.fromTo(".letter-card", {
+          opacity: 0,
+          y: 100,
+          scale: 0.8
+        }, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: "power3.out"
+        })
+      }
+    })
+
+    // Memory cards animation
+    const memoryCards = document.querySelectorAll('.memory-card')
+    memoryCards.forEach((card, index) => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.fromTo(card, {
+            opacity: 0,
+            y: 60,
+            rotationY: 45
+          }, {
+            opacity: 1,
+            y: 0,
+            rotationY: 0,
+            duration: 0.8,
+            delay: index * 0.2,
+            ease: "power3.out"
+          })
+        }
+      })
+    })
+
+    // Future dreams animation
+    const futureDreams = document.querySelectorAll('.future-dream')
+    futureDreams.forEach((dream, index) => {
+      ScrollTrigger.create({
+        trigger: dream,
+        start: "top 75%",
+        onEnter: () => {
+          gsap.fromTo(dream, {
+            opacity: 0,
+            y: 80,
+            scale: 0.8
+          }, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            delay: index * 0.3,
+            ease: "back.out(1.7)"
+          })
+        }
+      })
+    })
+
+    // Love counter animation
+    ScrollTrigger.create({
+      trigger: "#love-counter",
+      start: "top 70%",
+      onEnter: () => {
+        const counterCards = document.querySelectorAll('.counter-card')
+        gsap.fromTo(counterCards, {
+          opacity: 0,
+          y: 60,
+          scale: 0.8
+        }, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "back.out(1.7)"
+        })
+      }
+    })
+
+    // Love notes animation
+    const loveNotes = document.querySelectorAll('.love-note')
+    loveNotes.forEach((note, index) => {
+      ScrollTrigger.create({
+        trigger: note,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.fromTo(note, {
+            opacity: 0,
+            y: 80,
+            rotationX: 45
+          }, {
+            opacity: 1,
+            y: 0,
+            rotationX: 0,
+            duration: 1,
+            delay: index * 0.3,
+            ease: "power3.out"
+          })
+        }
+      })
+    })
+
+    // Final message animation
+    ScrollTrigger.create({
+      trigger: "#final-message",
+      start: "top 70%",
+      onEnter: () => {
+        const tl = gsap.timeline()
+        tl.fromTo("#final-message > div > *", {
+          opacity: 0,
+          y: 50,
+          scale: 0.8
+        }, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power3.out"
+        })
+      }
+    })
+  }
+
+  // Parallax effects
+  function initParallaxEffects() {
+    // Hero parallax
+    gsap.to("#hero", {
+      yPercent: -50,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    })
+
+    // Section headers parallax
+    const headers = document.querySelectorAll('h2')
+    headers.forEach(header => {
+      gsap.to(header, {
+        yPercent: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: header,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      })
+    })
+  }
+
+  // Live counter for time together
+  function initLiveCounter() {
+    const startDate = new Date('2023-06-13T00:00:00')
+    
+    function updateCounter() {
+      const now = new Date()
+      const diff = now - startDate
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+      
+      const daysEl = document.getElementById('days-counter')
+      const hoursEl = document.getElementById('hours-counter')
+      const minutesEl = document.getElementById('minutes-counter')
+      const secondsEl = document.getElementById('seconds-counter')
+      
+      if (daysEl) daysEl.textContent = days
+      if (hoursEl) hoursEl.textContent = hours
+      if (minutesEl) minutesEl.textContent = minutes
+      if (secondsEl) secondsEl.textContent = seconds
+      
+      // Update live message
+      const messageEl = document.getElementById('live-counter-message')
+      if (messageEl && seconds % 10 === 0) {
+        const messages = [
+          "Cada segundo que pasa es un segundo más de amor compartido",
+          "El tiempo vuela cuando estamos juntos 💕",
+          "Contando cada momento de felicidad",
+          "Nuestro amor crece con cada segundo que pasa"
+        ]
+        messageEl.textContent = messages[Math.floor(Math.random() * messages.length)]
+      }
+    }
+    
+    updateCounter()
+    setInterval(updateCounter, 1000)
+  }
+
+  // Interactive love notes
+  function initInteractiveNotes() {
+    const loveNotes = document.querySelectorAll('.love-note')
+    const noteContents = {
+      '1': {
+        title: "Nuestro Primer Beso 💋",
+        content: "Recuerdo cada detalle de ese momento mágico. El mundo se detuvo y supe que había encontrado a mi persona especial. Tus labios eran suaves como pétalos de rosa, y en ese instante, mi corazón supo que te pertenecía para siempre."
       },
-      0.15
-    )
-    .to(
-      "#hero-key",
-      {
-        opacity: 0,
-        duration: 0.2,
+      '2': {
+        title: "Noches de Luna 🌙",
+        content: "Esas conversaciones bajo las estrellas que duraban hasta el amanecer. Hablábamos de nuestros sueños, nuestros miedos, nuestro futuro juntos. La luna era testigo de nuestras promesas de amor eterno."
       },
-      0.4
+      '3': {
+        title: "Amaneceres Juntos 🌅",
+        content: "Cada amanecer contigo es un regalo. Ver cómo la luz del sol ilumina tu rostro mientras duermes es mi momento favorito del día. Eres más hermosa que cualquier amanecer que haya visto."
+      }
+    }
+    
+    loveNotes.forEach(note => {
+      note.addEventListener('click', () => {
+        const noteId = note.getAttribute('data-note')
+        const content = noteContents[noteId]
+        
+        if (content) {
+          showLoveNoteModal(content)
+        }
+      })
+    })
+  }
+
+  function showLoveNoteModal(content) {
+    // Create modal
+    const modal = document.createElement('div')
+    modal.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-8'
+    modal.innerHTML = `
+      <div class="bg-gradient-to-br from-rose-900/80 to-purple-900/80 backdrop-blur-xl border border-rose-300/30 rounded-3xl p-12 max-w-2xl w-full">
+        <h3 class="text-3xl font-cursive text-gradient mb-6">${content.title}</h3>
+        <p class="text-lg text-rose-200 leading-relaxed mb-8">${content.content}</p>
+        <button class="romantic-button bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-rose-500/50 transition-all duration-300">
+          Cerrar con Amor 💕
+        </button>
+      </div>
+    `
+    
+    document.body.appendChild(modal)
+    
+    // Animate modal in
+    gsap.fromTo(modal, 
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3 }
     )
+    gsap.fromTo(modal.querySelector('div'), 
+      { scale: 0.8, y: 50 },
+      { scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }
+    )
+    
+    // Close modal
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.tagName === 'BUTTON') {
+        gsap.to(modal, {
+          opacity: 0,
+          duration: 0.3,
+          onComplete: () => modal.remove()
+        })
+      }
+    })
+  }
+
+  // Motion effects for micro-interactions
+  function initMotionEffects() {
+    // Love message button
+    const loveMsgBtn = document.getElementById('love-message-btn')
+    if (loveMsgBtn) {
+      loveMsgBtn.addEventListener('click', () => {
+        createHeartExplosion(window.innerWidth / 2, window.innerHeight / 2)
+        
+        // Random love message
+        const messages = [
+          "Te amo más cada día 💕",
+          "Eres mi mundo entero ❤️",
+          "Gracias por estos 2 años perfectos 💖",
+          "Mi corazón late solo por ti 💗"
+        ]
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)]
+        showFloatingMessage(randomMessage)
+      })
+    }
+
+    // Anniversary surprise button
+    const surpriseBtn = document.getElementById('anniversary-surprise')
+    if (surpriseBtn) {
+      surpriseBtn.addEventListener('click', () => {
+        createSpecialSurprise()
+      })
+    }
+
+    // Add hover effects to counter cards
+    const counterCards = document.querySelectorAll('.counter-card')
+    counterCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        animate(card, { 
+          scale: 1.05,
+          boxShadow: "0 0 30px rgba(244, 63, 94, 0.3)"
+        }, { 
+          duration: 0.3 
+        })
+      })
+      
+      card.addEventListener('mouseleave', () => {
+        animate(card, { 
+          scale: 1,
+          boxShadow: "0 0 0px rgba(244, 63, 94, 0)"
+        }, { 
+          duration: 0.3 
+        })
+      })
+    })
+  }
+
+  // Special effects
+  function initSpecialEffects() {
+    // Create floating particles
+    createAmbientParticles()
+    
+    // Add romantic cursor trail (desktop only)
+    if (window.innerWidth > 768) {
+      initRomanticCursor()
+    }
+  }
+
+  function createHeartExplosion(x, y) {
+    const hearts = ['💕', '💖', '💗', '💝', '💞', '💘', '❤️', '💓']
+    
+    for (let i = 0; i < 12; i++) {
+      const heart = document.createElement('div')
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)]
+      heart.className = 'fixed pointer-events-none text-3xl z-50'
+      heart.style.left = x + 'px'
+      heart.style.top = y + 'px'
+      document.body.appendChild(heart)
+
+      const angle = (Math.PI * 2 * i) / 12
+      const distance = Math.random() * 200 + 100
+      const targetX = x + Math.cos(angle) * distance
+      const targetY = y + Math.sin(angle) * distance
+
+      animate(heart, {
+        x: targetX - x,
+        y: targetY - y,
+        scale: [0, 1.5, 0],
+        rotate: [0, 360],
+        opacity: [1, 1, 0]
+      }, {
+        duration: 2,
+        easing: "ease-out"
+      }).finished.then(() => heart.remove())
+    }
+  }
+
+  function showFloatingMessage(message) {
+    const messageEl = document.createElement('div')
+    messageEl.textContent = message
+    messageEl.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-cursive text-rose-300 z-50 pointer-events-none'
+    document.body.appendChild(messageEl)
+
+    animate(messageEl, {
+      y: -100,
+      opacity: [0, 1, 1, 0],
+      scale: [0.8, 1.2, 1]
+    }, {
+      duration: 3,
+      easing: "ease-out"
+    }).finished.then(() => messageEl.remove())
+  }
+
+  function createSpecialSurprise() {
+    // Create a shower of hearts and sparkles
+    createHeartExplosion(window.innerWidth / 2, window.innerHeight / 2)
+    
+    setTimeout(() => {
+      alert("🎉 ¡Sorpresa! 🎉\n\nEsta página web fue creada especialmente para ti, con todo mi amor y dedicación. Cada línea de código lleva un pedacito de mi corazón.\n\n¡Feliz Segundo Aniversario, mi amor! 💕")
+    }, 1000)
+  }
+
+  function createAmbientParticles() {
+    const particleCount = 20
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div')
+      particle.className = 'fixed pointer-events-none w-1 h-1 bg-rose-300/20 rounded-full'
+      particle.style.left = Math.random() * 100 + '%'
+      particle.style.top = Math.random() * 100 + '%'
+      particle.style.zIndex = '1'
+      document.body.appendChild(particle)
+      
+      // Animate particle
+      const animateParticle = () => {
+        animate(particle, {
+          x: (Math.random() - 0.5) * 100,
+          y: (Math.random() - 0.5) * 100,
+          opacity: [0.2, 0.8, 0.2]
+        }, {
+          duration: Math.random() * 4 + 3,
+          easing: "ease-in-out",
+          repeat: Infinity,
+          direction: "alternate"
+        })
+      }
+      
+      setTimeout(animateParticle, Math.random() * 2000)
+    }
+  }
+
+  function initRomanticCursor() {
+    const trails = []
+    const trailLength = 6
+    const hearts = ['💕', '💖', '💗']
+
+    for (let i = 0; i < trailLength; i++) {
+      const trail = document.createElement('div')
+      trail.textContent = hearts[i % hearts.length]
+      trail.className = 'fixed pointer-events-none text-sm opacity-0 z-40'
+      document.body.appendChild(trail)
+      trails.push(trail)
+    }
+
+    let mouseX = 0, mouseY = 0
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX
+      mouseY = e.clientY
+      
+      trails.forEach((trail, index) => {
+        setTimeout(() => {
+          trail.style.left = mouseX + 'px'
+          trail.style.top = mouseY + 'px'
+          trail.style.opacity = (trailLength - index) / trailLength * 0.6
+          trail.style.transform = `translate(-50%, -50%) scale(${(trailLength - index) / trailLength})`
+        }, index * 50)
+      })
+    })
+  }
+
+  // Hide scroll indicator after first scroll
+  ScrollTrigger.create({
+    trigger: "body",
+    start: "top -10",
+    onEnter: () => {
+      gsap.to("#scroll-indicator", { 
+        opacity: 0, 
+        duration: 0.5 
+      })
+    },
+    onLeaveBack: () => {
+      gsap.to("#scroll-indicator", { 
+        opacity: 1, 
+        duration: 0.5 
+      })
+    }
+  })
+
+  // Music toggle functionality (placeholder)
+  document.getElementById('music-toggle')?.addEventListener('click', () => {
+    // Add your background music logic here
+    console.log('Music toggle clicked')
+  })
 </script>

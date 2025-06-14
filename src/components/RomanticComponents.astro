@@ -1,0 +1,215 @@
+---
+// src/components/RomanticComponents.astro
+// Componentes románticos reutilizables
+
+interface Props {
+  type?: 'heart' | 'star' | 'sparkle' | 'love-message';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  color?: 'rose' | 'purple' | 'pink' | 'gradient';
+  animated?: boolean;
+}
+
+const { 
+  type = 'heart', 
+  size = 'md', 
+  color = 'rose', 
+  animated = true 
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-lg',
+  md: 'text-2xl',
+  lg: 'text-4xl',
+  xl: 'text-6xl'
+};
+
+const colorClasses = {
+  rose: 'text-rose-400',
+  purple: 'text-purple-400',
+  pink: 'text-pink-400',
+  gradient: 'text-gradient'
+};
+
+const animationClass = animated ? 'animate-float' : '';
+---
+
+<!-- Romantic Heart Component -->
+{type === 'heart' && (
+  <div class={`romantic-heart ${sizeClasses[size]} ${colorClasses[color]} ${animationClass} inline-block`}>
+    💕
+  </div>
+)}
+
+<!-- Romantic Star Component -->
+{type === 'star' && (
+  <div class={`romantic-star ${sizeClasses[size]} ${colorClasses[color]} ${animationClass} inline-block`}>
+    ✨
+  </div>
+)}
+
+<!-- Romantic Sparkle Component -->
+{type === 'sparkle' && (
+  <div class={`romantic-sparkle ${sizeClasses[size]} ${colorClasses[color]} animate-sparkle inline-block`}>
+    💫
+  </div>
+)}
+
+<!-- Love Message Component -->
+{type === 'love-message' && (
+  <div class="love-message-container relative inline-block">
+    <div class={`love-message ${sizeClasses[size]} ${colorClasses[color]} animate-romantic-pulse`}>
+      💌
+    </div>
+    <div class="absolute -top-2 -right-2 w-4 h-4 bg-rose-500 rounded-full animate-ping"></div>
+  </div>
+)}
+
+<style>
+  .romantic-heart:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+  }
+
+  .romantic-star:hover {
+    transform: rotate(180deg) scale(1.1);
+    transition: transform 0.5s ease;
+  }
+
+  .romantic-sparkle {
+    filter: drop-shadow(0 0 10px currentColor);
+  }
+
+  .love-message-container:hover .love-message {
+    transform: scale(1.3) rotate(10deg);
+    transition: transform 0.3s ease;
+  }
+</style>
+
+<script>
+  // Add interactive behaviors to romantic components
+  document.addEventListener('DOMContentLoaded', () => {
+    // Heart components
+    const hearts = document.querySelectorAll('.romantic-heart');
+    hearts.forEach(heart => {
+      heart.addEventListener('click', (e) => {
+        createHeartBurst(e.pageX, e.pageY);
+      });
+    });
+
+    // Star components
+    const stars = document.querySelectorAll('.romantic-star');
+    stars.forEach(star => {
+      star.addEventListener('click', (e) => {
+        createStarTrail(e.pageX, e.pageY);
+      });
+    });
+
+    // Love message components
+    const loveMessages = document.querySelectorAll('.love-message-container');
+    loveMessages.forEach(message => {
+      message.addEventListener('click', (e) => {
+        showRandomLoveQuote(e.pageX, e.pageY);
+      });
+    });
+  });
+
+  function createHeartBurst(x, y) {
+    const hearts = ['💕', '💖', '💗', '💝', '💞', '💘'];
+    
+    for (let i = 0; i < 8; i++) {
+      const heart = document.createElement('div');
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.className = 'fixed pointer-events-none text-2xl z-50';
+      heart.style.left = x + 'px';
+      heart.style.top = y + 'px';
+      document.body.appendChild(heart);
+
+      const angle = (Math.PI * 2 * i) / 8;
+      const distance = 80;
+      
+      heart.animate([
+        { 
+          transform: 'translate(-50%, -50%) scale(0)', 
+          opacity: 1 
+        },
+        { 
+          transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1)`, 
+          opacity: 0 
+        }
+      ], {
+        duration: 1000,
+        easing: 'ease-out'
+      }).onfinish = () => heart.remove();
+    }
+  }
+
+  function createStarTrail(x, y) {
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        const star = document.createElement('div');
+        star.textContent = '✨';
+        star.className = 'fixed pointer-events-none text-xl z-50';
+        star.style.left = (x + Math.random() * 40 - 20) + 'px';
+        star.style.top = (y + Math.random() * 40 - 20) + 'px';
+        document.body.appendChild(star);
+
+        star.animate([
+          { 
+            transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', 
+            opacity: 1 
+          },
+          { 
+            transform: 'translate(-50%, -80px) scale(1.5) rotate(360deg)', 
+            opacity: 0 
+          }
+        ], {
+          duration: 1500,
+          easing: 'ease-out'
+        }).onfinish = () => star.remove();
+      }, i * 100);
+    }
+  }
+
+  function showRandomLoveQuote(x, y) {
+    const quotes = [
+      "Eres mi razón de ser ❤️",
+      "Contigo todo es posible 💫",
+      "Mi corazón te pertenece 💕",
+      "Eres mi sueño hecho realidad ✨",
+      "Juntos somos infinitos 💞",
+      "Tu amor es mi fuerza 💪",
+      "Eres mi hogar 🏠",
+      "Mi alma gemela 👫"
+    ];
+
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    const quoteEl = document.createElement('div');
+    quoteEl.textContent = quote;
+    quoteEl.className = 'fixed pointer-events-none font-cursive text-lg text-rose-300 z-50 px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full border border-rose-300/30';
+    quoteEl.style.left = x + 'px';
+    quoteEl.style.top = y + 'px';
+    quoteEl.style.transform = 'translate(-50%, -50%)';
+    document.body.appendChild(quoteEl);
+
+    quoteEl.animate([
+      { 
+        opacity: 0,
+        scale: 0.8,
+        y: 0
+      },
+      { 
+        opacity: 1,
+        scale: 1,
+        y: -20
+      },
+      { 
+        opacity: 0,
+        scale: 0.8,
+        y: -40
+      }
+    ], {
+      duration: 2500,
+      easing: 'ease-out'
+    }).onfinish = () => quoteEl.remove();
+  }
+</script>
